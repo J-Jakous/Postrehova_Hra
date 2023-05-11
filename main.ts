@@ -1,15 +1,18 @@
 input.onButtonPressed(Button.A, function () {
-    if (nahodne_cislo == 1) {
+    if (!(bylo_stisknuto_tlacitko) && nahodne_cislo == 1) {
         body += 1
     }
+    bylo_stisknuto_tlacitko = true
 })
 input.onButtonPressed(Button.B, function () {
-    if (nahodne_cislo == 2) {
+    if (!(bylo_stisknuto_tlacitko) && nahodne_cislo == 2) {
         body += 1
     }
+    bylo_stisknuto_tlacitko = true
 })
 let nahodne_cislo = 0
 let nahodny_interval = 0
+let bylo_stisknuto_tlacitko = false
 let odpocet = 3
 for (let index = 0; index < 3; index++) {
     basic.showNumber(odpocet)
@@ -19,6 +22,7 @@ for (let index = 0; index < 3; index++) {
 basic.clearScreen()
 let body = 0
 for (let index = 0; index < 10; index++) {
+    bylo_stisknuto_tlacitko = false
     nahodny_interval = randint(100, 500)
     nahodne_cislo = randint(1, 2)
     if (nahodne_cislo == 1) {
